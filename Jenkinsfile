@@ -6,33 +6,40 @@ pipeline {
     }
 
     stages {
+        stage('Checkout') {
+            steps {
+                // Checkout the code from your Git repository
+                git 'https://github.com/KirtikaSharma5104/jenkinshd.git'
+            }
+        }
+
         stage('Install Dependencies') {
             steps {
-                // Install npm dependencies
-                sh 'npm install'
+                // Install npm dependencies using npm
+                bat 'npm install'
             }
         }
 
         stage('Build') {
             steps {
                 // Build the React application
-                sh 'npm run build'
+                bat 'npm run build'
             }
         }
 
         stage('Test') {
             steps {
                 // Run tests using Jest
-                sh 'npm test -- --watchAll=false'
+                bat 'npm test -- --watchAll=false'
             }
         }
 
         stage('Deploy') {
             steps {
-                // In a real scenario, this might deploy to a server or hosting service
+                // Placeholder for deployment commands
                 echo 'Deploying the application...'
-                // Example: Copy build files to a web server (This is a placeholder)
-                // sh 'scp -r build/* user@server:/path/to/deploy/'
+                // Example: Copy build files to a server
+                // bat 'xcopy build\\* \\\\server\\path\\to\\deploy /E /Y'
             }
         }
     }
@@ -50,4 +57,3 @@ pipeline {
         }
     }
 }
-
