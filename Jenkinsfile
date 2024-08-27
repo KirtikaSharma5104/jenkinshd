@@ -6,13 +6,6 @@ pipeline {
     }
 
     stages {
-        stage('Checkout') {
-            steps {
-                // Checkout the code from your Git repository
-                git 'https://github.com/KirtikaSharma5104/jenkinshd.git'
-            }
-        }
-
         stage('Install Dependencies') {
             steps {
                 // Install npm dependencies
